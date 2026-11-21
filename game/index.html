@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin Scenes — Spot the Difference</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>🔍 Twin <span>Scenes</span></h1>
+    <p>Spot the difference — two pictures, ten changes, one sharp pair of eyes.</p>
+  </header>
+
+  <div id="hud">
+    <div class="chip"><small>Round</small><span id="hud-round">Round 1 of 3</span></div>
+    <div class="chip"><small>Scene</small><span id="hud-scene">Sunny Kitchen</span></div>
+    <div class="chip"><small>Found</small><span id="hud-found">0 / 10</span><small id="hud-found-label">found</small></div>
+    <div class="chip" id="hud-time-chip"><small>Time left</small><span id="hud-time">2:30</span></div>
+    <div class="chip"><small>Score</small><span id="hud-score">0</span></div>
+    <div class="chip"><small>Hints left</small><span id="hud-hints">3</span></div>
+    <button id="btn-hint" type="button">💡 Hint (H)</button>
+    <button id="btn-restart" class="secondary" type="button">↻ Restart round</button>
+    <button id="btn-mute" type="button">🔊 Sound on</button>
+  </div>
+
+  <div id="boards">
+    <div class="panel" id="panel-a"></div>
+    <div class="panel" id="panel-b"></div>
+    <div id="crosshair"></div>
+  </div>
+
+  <div id="message"></div>
+  <div id="found-list"></div>
+
+  <footer>Original art, drawn in code — no images, no network. Keyboard: arrows move, Enter marks, H hint, R restart, M mute, N next round.</footer>
+</div>
+
+<div id="overlay"><div class="card" id="overlay-card"></div></div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

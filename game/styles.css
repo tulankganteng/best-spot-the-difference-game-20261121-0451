@@ -1,0 +1,81 @@
+/* Twin Scenes — layout and look. Warm paper background, chunky rounded
+   panels, big readable HUD. No web fonts, no network: system stack only. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+  background: #f6ead6;
+  color: #3a2a1a;
+  min-height: 100vh;
+}
+#app { max-width: 1340px; margin: 0 auto; padding: 10px 16px 20px; }
+header { text-align: center; padding: 6px 0 10px; }
+header h1 { font-size: 30px; letter-spacing: 1px; color: #b34a2b; }
+header h1 span { color: #2f7d5b; }
+header p { font-size: 14px; color: #7a5c40; margin-top: 2px; }
+#hud {
+  display: flex; gap: 10px; align-items: stretch; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 10px;
+}
+.chip {
+  background: #fff8ec; border: 2px solid #d9b98a; border-radius: 12px;
+  padding: 6px 14px; font-size: 16px; font-weight: bold; min-width: 110px;
+  text-align: center; box-shadow: 0 2px 0 #d9b98a;
+}
+.chip small { display: block; font-size: 11px; font-weight: normal; color: #8a6a48; text-transform: uppercase; letter-spacing: 1px; }
+.chip.warn { border-color: #d33; color: #d33; animation: pulse 1s infinite; }
+@keyframes pulse { 50% { opacity: 0.55; } }
+button {
+  font-family: inherit; font-size: 15px; font-weight: bold; cursor: pointer;
+  background: #2f7d5b; color: #fff; border: none; border-radius: 12px;
+  padding: 8px 18px; box-shadow: 0 3px 0 #1e5a40;
+}
+button:hover { filter: brightness(1.08); }
+button:active { transform: translateY(2px); box-shadow: none; }
+button.secondary { background: #b34a2b; box-shadow: 0 3px 0 #7e3018; }
+button:disabled { opacity: 0.45; cursor: default; }
+#boards { display: flex; gap: 14px; justify-content: center; position: relative; }
+.panel {
+  position: relative; width: 640px; max-width: 48vw;
+  border: 4px solid #8a6a48; border-radius: 14px; overflow: hidden;
+  background: #fff; box-shadow: 0 4px 14px rgba(58, 42, 26, 0.25);
+}
+.panel svg { display: block; width: 100%; height: auto; }
+.panel .tag {
+  position: absolute; top: 8px; left: 8px; background: rgba(58, 42, 26, 0.8);
+  color: #ffe9c4; font-size: 13px; font-weight: bold; padding: 3px 10px;
+  border-radius: 20px;
+}
+.panel .tag.right { left: auto; right: 8px; }
+#crosshair {
+  position: absolute; width: 34px; height: 34px; margin: -17px 0 0 -17px;
+  border: 2px dashed #d33; border-radius: 50%; pointer-events: none;
+  display: none; z-index: 5;
+}
+#crosshair::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 4px; height: 4px;
+  margin: -2px 0 0 -2px; background: #d33; border-radius: 50%;
+}
+#message {
+  text-align: center; font-size: 18px; font-weight: bold; min-height: 28px;
+  margin-top: 10px; color: #2f7d5b;
+}
+#message.bad { color: #d33; }
+#overlay {
+  position: fixed; inset: 0; background: rgba(58, 42, 26, 0.55);
+  display: none; align-items: center; justify-content: center; z-index: 10;
+}
+#overlay.show { display: flex; }
+.card {
+  background: #fff8ec; border: 3px solid #d9b98a; border-radius: 18px;
+  padding: 28px 34px; max-width: 560px; text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+.card h2 { font-size: 28px; color: #b34a2b; margin-bottom: 10px; }
+.card p { font-size: 16px; line-height: 1.55; margin-bottom: 10px; }
+.card .big { font-size: 22px; font-weight: bold; color: #2f7d5b; }
+.card .keys { font-size: 13px; color: #8a6a48; margin-top: 12px; line-height: 1.7; }
+.card button { margin-top: 12px; font-size: 17px; padding: 10px 26px; }
+#found-list { font-size: 14px; color: #7a5c40; text-align: center; margin-top: 6px; min-height: 20px; }
+footer { text-align: center; font-size: 12px; color: #a08055; margin-top: 12px; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+.shake { animation: shake 0.25s ease 2; }
